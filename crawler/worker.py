@@ -7,6 +7,13 @@ import scraper
 import time
 
 
+
+COUNT = 0
+with open('./stopwords.txt', 'r') as stopwords:
+    STOPWORDS = [word.strip() for word in stopwords.readlines()][1:]
+
+
+
 class Worker(Thread):
     def __init__(self, worker_id, config, frontier):
         self.logger = get_logger(f"Worker-{worker_id}", "Worker")
@@ -20,8 +27,10 @@ class Worker(Thread):
     def run(self):
         while True:
             tbd_url = self.frontier.get_tbd_url()
+            COUNT += 1
             if not tbd_url:
                 self.logger.info("Frontier is empty. Stopping Crawler.")
+                print(f'Total number of unique pages crawled: {COUNT}')
                 break
             resp = download(tbd_url, self.config, self.logger)
             self.logger.info(

@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://www.ranks.nl/stopwords -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Stopwords</title>
+
+
+<link rel="canonical" href="http://www.ranks.nl/stopwords">
+
+<link rel="icon" type="image/vnd.microsoft.icon" href="https://www.ranks.nl/images/favicon.ico">
+
+
+
+<script type="text/javascript" async="" src="./Stopwords_files/dc.js"></script><script type="text/javascript" src="./Stopwords_files/jquery-1.10.2.min.js"></script>
+
+<script src="./Stopwords_files/jquery.hoverIntent.minified.js" type="text/javascript"></script>
+<script src="./Stopwords_files/jquery.cluetip.min.js" type="text/javascript"></script>
+<link href="./Stopwords_files/jquery.cluetip.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap -->
+    <link href="./Stopwords_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Stopwords_files/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="./Stopwords_files/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="./Stopwords_files/jquery.tablesorter.min.js"></script>
+
+
+<script type="text/JavaScript" src="./Stopwords_files/bootstrap.youtubepopup.min.js"></script>
+
+
+<script src="./Stopwords_files/lightbox-2.6.min.js"></script>
+<link href="./Stopwords_files/lightbox.css" rel="stylesheet">
+
+<link rel="stylesheet" href="./Stopwords_files/font-awesome.min.css">
+<link href="./Stopwords_files/style.css" rel="stylesheet">
+
+<meta name="generator" content="WebGUI 7.10.28"><meta http-equiv="Content-Script-Type" content="text/javascript"><meta http-equiv="Content-Style-Type" content="text/css"><script type="text/javascript">function getWebguiProperty (propName) {var props = new Array();props["extrasURL"] = "/extras/";props["pageURL"] = "/stopwords";props["firstDayOfWeek"] = "0";return props[propName];}</script><link href="./Stopwords_files/layout.css" rel="stylesheet" type="text/css"><!--page layout--><style type="text/css">
+ul.bulletList li, ul.bulletList ul {
+	margin-left:7px;
+	padding-left:0px;
+	font-size:9px;	
+}
+
+.bulletList .level0 {
+	font-size:13px;
+}
+
+.bulletList .level1 {
+	font-size:11px;
+}
+</style>
+
+<style type="text/css">
+ul.bulletList li, ul.bulletList ul {
+	margin-left:7px;
+	padding-left:0px;
+	font-size:9px;	
+}
+
+.bulletList .level0 {
+	font-size:13px;
+}
+
+.bulletList .level1 {
+	font-size:11px;
+}
+</style>
+
+<meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache, must-revalidate, max-age=0, private"><meta http-equiv="Expires" content="0"> 
+
+
+
+<script>
+$(document).ready(function(){
+
+   $("table").tablesorter(); 
+
+	
+   // tip from title
+   $('i.title, span.title').cluetip({
+   showTitle: false,
+   activation: 'click',
+   activation: 'hover', 
+   mouseOutClose: true,
+   splitTitle: '|',
+   arrows: true,
+   cluetipClass: 'rounded'
+   });
+   
+   // tip from ajax
+   $('i.tip').cluetip({
+	cluezIndex: 100000,
+	activation: 'click', 
+	attribute:  'w',
+	arrows: true,
+	sticky: true,
+	showTitle: false,
+	mouseOutClose: true,
+	closePosition: 'top',
+	cluetipClass: 'rounded',
+	activation: 'hover', 
+	closeText: '<i style="float:right" class="fa fa-minus-square-o">',
+  });  
+
+
+	$(function () {
+		$(".youtube").YouTubeModal({autoplay:0, width:640, height:480});
+	});
+
+
+
+});
+
+
+
+</script>
+
+
+</head>
+<body style="" data-new-gr-c-s-check-loaded="14.1203.0" data-gr-ext-installed="">
+
+
+<div id="wrap">
+
+<!-- Fixed navbar -->
+<div id="nav090bcf1c0aefc5dccbeb7bdcab60c70b" class="nav bulletedList">
+
+<a name="idCQvPHArvxdzL63vcq2DHCw" id="idCQvPHArvxdzL63vcq2DHCw"></a>
+
+
+
+
+
+
+
+
+ <!-- Fixed navbar -->
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+
+
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+<a class="navbar-brand logo" href="https://www.ranks.nl/">RANKS NL <i class="fa fa-chevron-right small_font"></i><i class="fa fa-chevron-right small_font"></i></a> 
+
+          </div>
+
+
+
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+            
+ <li><a href="https://www.ranks.nl/plans/free-plan">Request Free Plan</a></li>             
+<li><a href="https://www.ranks.nl/demo">Demo</a></li>
+              <li><a href="https://www.ranks.nl/plans">Plans &amp; Pricing</a></li>
+            
+                     <li class="dropdown">                
+		<a href="https://www.ranks.nl/stopwords#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+		<ul class="dropdown-menu">
+	
+  <li class="dropdown-header">Resources</li>
+    		<li><a href="https://www.ranks.nl/docs">Tools Documentation</a></li>
+		      <li><a href="https://www.ranks.nl/abc">Ranks ABC</a></li>
+		      <li><a href="https://www.ranks.nl/stopwords">Stopword lists</a></li>
+		  
+		   
+	<li class="divider"></li>
+  <li class="dropdown-header">Info</li>
+
+		      <li><a href="https://www.ranks.nl/about">About Ranks NL</a></li>
+		      <li><a href="https://www.ranks.nl/contact">Contact</a></li>	
+<li><a href="https://www.ranks.nl/info/privacy-policy">Privacy Policy</a></li>
+<li><a href="https://www.ranks.nl/info/sales/refund-policy">Refund Policy</a></li>
+<li><a href="https://www.ranks.nl/info/terms">Terms of Service</a></li>
+<li><a href="https://www.ranks.nl/info/sales">Sales Questions and Answers</a></li>
+ <li><a href="https://www.ranks.nl/quotes">What others say about us</a></li>
+
+			
+                </ul>
+                </li>     
+
+            </ul>
+
+
+<div class="navbar-text navbar-right">
+
+<a href="https://www.ranks.nl/sign-in"><i class="fa fa-user grey"></i>&nbsp; Sign in</a>
+
+</div>
+
+
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<!-- Begin page content -->
+<div class="container">
+
+<div id="layout5965ac6b011a2e1397769012eb0a4003">
+    
+    <a name="idWWWsawEaLhOXdpAS6wpAAw" id="idWWWsawEaLhOXdpAS6wpAAw"></a>
+
+    
+
+  
+        
+
+<!-- toprows -->
+<div class="row">
+		
+	<div class="col-sm-4">
+	
+        <h1><small>Stopwords</small></h1>
+        
+        
+	</div>
+			
+	<div class="col-sm-8">
+	<div class="pull-right" id="socialbuttons" data-url="http://www.ranks.nl/stopwords" data-text="" data-title="Share this page">&nbsp;</div>
+	</div>
+				
+</div>
+
+
+<div class="row">
+<div class="col-xs-12">
+<div id="navbaef89499a8b28119bfd9ca560f55335" class="nav crumbTrail">
+
+<a name="iduu_JSZqLKBGb-ZylYPVTNQ" id="iduu_JSZqLKBGb-ZylYPVTNQ"></a>
+
+
+
+
+
+
+
+
+	<ol class="breadcrumb">
+	
+		
+
+<li><a href="https://www.ranks.nl/home">Home</a></li>
+
+
+
+	
+		
+
+<li><a href="https://www.ranks.nl/resources">Resources</a></li>
+
+
+
+	
+		
+
+<li class="active">Stopwords</li>
+
+
+
+	
+	</ol>
+
+
+<!--/navbaef89499a8b28119bfd9ca560f55335 /nav crumbTrail-->
+</div>
+ 					
+</div>
+</div>
+
+<!-- toprows -->
+
+
+    
+    <div class="row">
+
+    <!-- begin position 1 -->
+    <div class="col-sm-6">
+        
+        
+
+        
+            
+
+            
+            <div id="article89017776d4bc764a8d52b7a2bf5273b2" class="article default">
+
+<a name="idiQF3dtS8dkqNUreiv1Jzsg" id="idiQF3dtS8dkqNUreiv1Jzsg"></a>
+
+
+
+
+	<h3>Stopword Lists</h3>
+
+
+<div class="articleContent">
+
+
+	<div class="description">
+		<p>Collection of stopword lists in <strong>40+</strong> languages. Find the English stopwords below and/or follow the links to view our other language stop word lists.</p>
+	<!--/description-->
+	</div>
+
+
+
+
+<!--/articlecontent-->
+</div>
+
+
+
+<div class="wg-clear"></div>
+
+<!--/article89017776d4bc764a8d52b7a2bf5273b2 /article default-->
+</div>
+
+            
+            
+        
+            
+
+            
+            <h4>English Stopwords</h4><br>
+            
+            
+        
+            
+
+            
+            <div id="article10ad6d55aba755640460f888b8287532" class="panel panel-primary">
+
+<a name="idEK1tVaunVWQEYPiIuCh1Mg" id="idEK1tVaunVWQEYPiIuCh1Mg"></a>
+
+
+
+
+<div class="panel-heading">
+	<h2 class="panel-title">Default English stopwords list</h2>
+</div>
+
+
+
+
+
+	<div class="panel-body">
+		<p><em>This list is used in our <a href="https://www.ranks.nl/page-analyzer" target="_blank">Page Analyzer</a> and <a href="https://www.ranks.nl/article-analyzer" target="_blank">Article Analyzer</a> for English text,</em><br><em>when you let it use the default stopwords list.</em></p>
+<table style="height: 1534px; width: 349px;" cellspacing="5" cellpadding="5" border="0">
+<tbody>
+<tr>
+<td valign="top">a<br>about<br>above<br>after<br>again<br>against<br>all<br>am<br>an<br>and<br>any<br>are<br>aren't<br>as<br>at<br>be<br>because<br>been<br>before<br>being<br>below<br>between<br>both<br>but<br>by<br>can't<br>cannot<br>could<br>couldn't<br>did<br>didn't<br>do<br>does<br>doesn't<br>doing<br>don't<br>down<br>during<br>each<br>few<br>for<br>from<br>further<br>had<br>hadn't<br>has<br>hasn't<br>have<br>haven't<br>having<br>he<br>he'd<br>he'll<br>he's<br>her<br>here<br>here's<br>hers<br>herself<br>him<br>himself<br>his<br>how<br>how's<br>i<br>i'd<br>i'll<br>i'm<br>i've<br>if<br>in<br>into<br>is<br>isn't<br>it<br>it's<br>its<br>itself<br>let's<br>me<br>more<br>most<br>mustn't<br>my<br>myself<br>no<br>nor<br>not<br>of<br>off<br>on<br>once<br>only<br>or<br>other<br>ought<br>our<br>ours</td>
+<td valign="top">ourselves<br>out<br>over<br>own<br>same<br>shan't<br>she<br>she'd<br>she'll<br>she's<br>should<br>shouldn't<br>so<br>some<br>such<br>than<br>that<br>that's<br>the<br>their<br>theirs<br>them<br>themselves<br>then<br>there<br>there's<br>these<br>they<br>they'd<br>they'll<br>they're<br>they've<br>this<br>those<br>through<br>to<br>too<br>under<br>until<br>up<br>very<br>was<br>wasn't<br>we<br>we'd<br>we'll<br>we're<br>we've<br>were<br>weren't<br>what<br>what's<br>when<br>when's<br>where<br>where's<br>which<br>while<br>who<br>who's<br>whom<br>why<br>why's<br>with<br>won't<br>would<br>wouldn't<br>you<br>you'd<br>you'll<br>you're<br>you've<br>your<br>yours<br>yourself<br>yourselves</td>
+</tr>
+</tbody>
+</table>
+	
+	</div>
+
+
+
+
+
+
+
+<div class="wg-clear"></div>
+
+<!--/article10ad6d55aba755640460f888b8287532 /article default-->
+</div>
+
+            
+            
+        
+            
+
+            
+            <div id="article058919042e40f5d26c8d9b2d65e9ac0f" class="panel panel-default">
+
+<a name="idBYkZBC5A9dJsjZstZemsDw" id="idBYkZBC5A9dJsjZstZemsDw"></a>
+
+
+
+
+<div class="panel-heading">
+	<h3 class="panel-title">MySQL Stopwords</h3>
+</div>
+
+
+
+
+
+	<div class="panel-body">
+		<p>Below the default list of full-text stopwords as used by MySQL.<br><br></p>
+<table border="0">
+<tbody>
+<tr>
+<td>a's</td>
+<td>able</td>
+<td>about</td>
+<td>above</td>
+<td>according</td>
+</tr>
+<tr>
+<td>accordingly</td>
+<td>across</td>
+<td>actually</td>
+<td>after</td>
+<td>afterwards</td>
+</tr>
+<tr>
+<td>again</td>
+<td>against</td>
+<td>ain't</td>
+<td>all</td>
+<td>allow</td>
+</tr>
+<tr>
+<td>allows</td>
+<td>almost</td>
+<td>alone</td>
+<td>along</td>
+<td>already</td>
+</tr>
+<tr>
+<td>also</td>
+<td>although</td>
+<td>always</td>
+<td>am</td>
+<td>among</td>
+</tr>
+<tr>
+<td>amongst</td>
+<td>an</td>
+<td>and</td>
+<td>another</td>
+<td>any</td>
+</tr>
+<tr>
+<td>anybody</td>
+<td>anyhow</td>
+<td>anyone</td>
+<td>anything</td>
+<td>anyway</td>
+</tr>
+<tr>
+<td>anyways</td>
+<td>anywhere</td>
+<td>apart</td>
+<td>appear</td>
+<td>appreciate</td>
+</tr>
+<tr>
+<td>appropriate</td>
+<td>are</td>
+<td>aren't</td>
+<td>around</td>
+<td>as</td>
+</tr>
+<tr>
+<td>aside</td>
+<td>ask</td>
+<td>asking</td>
+<td>associated</td>
+<td>at</td>
+</tr>
+<tr>
+<td>available</td>
+<td>away</td>
+<td>awfully</td>
+<td>be</td>
+<td>became</td>
+</tr>
+<tr>
+<td>because</td>
+<td>become</td>
+<td>becomes</td>
+<td>becoming</td>
+<td>been</td>
+</tr>
+<tr>
+<td>before</td>
+<td>beforehand</td>
+<td>behind</td>
+<td>being</td>
+<td>believe</td>
+</tr>
+<tr>
+<td>below</td>
+<td>beside</td>
+<td>besides</td>
+<td>best</td>
+<td>better</td>
+</tr>
+<tr>
+<td>between</td>
+<td>beyond</td>
+<td>both</td>
+<td>brief</td>
+<td>but</td>
+</tr>
+<tr>
+<td>by</td>
+<td>c'mon</td>
+<td>c's</td>
+<td>came</td>
+<td>can</td>
+</tr>
+<tr>
+<td>can't</td>
+<td>cannot</td>
+<td>cant</td>
+<td>cause</td>
+<td>causes</td>
+</tr>
+<tr>
+<td>certain</td>
+<td>certainly</td>
+<td>changes</td>
+<td>clearly</td>
+<td>co</td>
+</tr>
+<tr>
+<td>com</td>
+<td>come</td>
+<td>comes</td>
+<td>concerning</td>
+<td>consequently</td>
+</tr>
+<tr>
+<td>consider</td>
+<td>considering</td>
+<td>contain</td>
+<td>containing</td>
+<td>contains</td>
+</tr>
+<tr>
+<td>corresponding</td>
+<td>could</td>
+<td>couldn't</td>
+<td>course</td>
+<td>currently</td>
+</tr>
+<tr>
+<td>definitely</td>
+<td>described</td>
+<td>despite</td>
+<td>did</td>
+<td>didn't</td>
+</tr>
+<tr>
+<td>different</td>
+<td>do</td>
+<td>does</td>
+<td>doesn't</td>
+<td>doing</td>
+</tr>
+<tr>
+<td>don't</td>
+<td>done</td>
+<td>down</td>
+<td>downwards</td>
+<td>during</td>
+</tr>
+<tr>
+<td>each</td>
+<td>edu</td>
+<td>eg</td>
+<td>eight</td>
+<td>either</td>
+</tr>
+<tr>
+<td>else</td>
+<td>elsewhere</td>
+<td>enough</td>
+<td>entirely</td>
+<td>especially</td>
+</tr>
+<tr>
+<td>et</td>
+<td>etc</td>
+<td>even</td>
+<td>ever</td>
+<td>every</td>
+</tr>
+<tr>
+<td>everybody</td>
+<td>everyone</td>
+<td>everything</td>
+<td>everywhere</td>
+<td>ex</td>
+</tr>
+<tr>
+<td>exactly</td>
+<td>example</td>
+<td>except</td>
+<td>far</td>
+<td>few</td>
+</tr>
+<tr>
+<td>fifth</td>
+<td>first</td>
+<td>five</td>
+<td>followed</td>
+<td>following</td>
+</tr>
+<tr>
+<td>follows</td>
+<td>for</td>
+<td>former</td>
+<td>formerly</td>
+<td>forth</td>
+</tr>
+<tr>
+<td>four</td>
+<td>from</td>
+<td>further</td>
+<td>furthermore</td>
+<td>get</td>
+</tr>
+<tr>
+<td>gets</td>
+<td>getting</td>
+<td>given</td>
+<td>gives</td>
+<td>go</td>
+</tr>
+<tr>
+<td>goes</td>
+<td>going</td>
+<td>gone</td>
+<td>got</td>
+<td>gotten</td>
+</tr>
+<tr>
+<td>greetings</td>
+<td>had</td>
+<td>hadn't</td>
+<td>happens</td>
+<td>hardly</td>
+</tr>
+<tr>
+<td>has</td>
+<td>hasn't</td>
+<td>have</td>
+<td>haven't</td>
+<td>having</td>
+</tr>
+<tr>
+<td>he</td>
+<td>he's</td>
+<td>hello</td>
+<td>help</td>
+<td>hence</td>
+</tr>
+<tr>
+<td>her</td>
+<td>here</td>
+<td>here's</td>
+<td>hereafter</td>
+<td>hereby</td>
+</tr>
+<tr>
+<td>herein</td>
+<td>hereupon</td>
+<td>hers</td>
+<td>herself</td>
+<td>hi</td>
+</tr>
+<tr>
+<td>him</td>
+<td>himself</td>
+<td>his</td>
+<td>hither</td>
+<td>hopefully</td>
+</tr>
+<tr>
+<td>how</td>
+<td>howbeit</td>
+<td>however</td>
+<td>i'd</td>
+<td>i'll</td>
+</tr>
+<tr>
+<td>i'm</td>
+<td>i've</td>
+<td>ie</td>
+<td>if</td>
+<td>ignored</td>
+</tr>
+<tr>
+<td>immediate</td>
+<td>in</td>
+<td>inasmuch</td>
+<td>inc</td>
+<td>indeed</td>
+</tr>
+<tr>
+<td>indicate</td>
+<td>indicated</td>
+<td>indicates</td>
+<td>inner</td>
+<td>insofar</td>
+</tr>
+<tr>
+<td>instead</td>
+<td>into</td>
+<td>inward</td>
+<td>is</td>
+<td>isn't</td>
+</tr>
+<tr>
+<td>it</td>
+<td>it'd</td>
+<td>it'll</td>
+<td>it's</td>
+<td>its</td>
+</tr>
+<tr>
+<td>itself</td>
+<td>just</td>
+<td>keep</td>
+<td>keeps</td>
+<td>kept</td>
+</tr>
+<tr>
+<td>know</td>
+<td>known</td>
+<td>knows</td>
+<td>last</td>
+<td>lately</td>
+</tr>
+<tr>
+<td>later</td>
+<td>latter</td>
+<td>latterly</td>
+<td>least</td>
+<td>less</td>
+</tr>
+<tr>
+<td>lest</td>
+<td>let</td>
+<td>let's</td>
+<td>like</td>
+<td>liked</td>
+</tr>
+<tr>
+<td>likely</td>
+<td>little</td>
+<td>look</td>
+<td>looking</td>
+<td>looks</td>
+</tr>
+<tr>
+<td>ltd</td>
+<td>mainly</td>
+<td>many</td>
+<td>may</td>
+<td>maybe</td>
+</tr>
+<tr>
+<td>me</td>
+<td>mean</td>
+<td>meanwhile</td>
+<td>merely</td>
+<td>might</td>
+</tr>
+<tr>
+<td>more</td>
+<td>moreover</td>
+<td>most</td>
+<td>mostly</td>
+<td>much</td>
+</tr>
+<tr>
+<td>must</td>
+<td>my</td>
+<td>myself</td>
+<td>name</td>
+<td>namely</td>
+</tr>
+<tr>
+<td>nd</td>
+<td>near</td>
+<td>nearly</td>
+<td>necessary</td>
+<td>need</td>
+</tr>
+<tr>
+<td>needs</td>
+<td>neither</td>
+<td>never</td>
+<td>nevertheless</td>
+<td>new</td>
+</tr>
+<tr>
+<td>next</td>
+<td>nine</td>
+<td>no</td>
+<td>nobody</td>
+<td>non</td>
+</tr>
+<tr>
+<td>none</td>
+<td>noone</td>
+<td>nor</td>
+<td>normally</td>
+<td>not</td>
+</tr>
+<tr>
+<td>nothing</td>
+<td>novel</td>
+<td>now</td>
+<td>nowhere</td>
+<td>obviously</td>
+</tr>
+<tr>
+<td>of</td>
+<td>off</td>
+<td>often</td>
+<td>oh</td>
+<td>ok</td>
+</tr>
+<tr>
+<td>okay</td>
+<td>old</td>
+<td>on</td>
+<td>once</td>
+<td>one</td>
+</tr>
+<tr>
+<td>ones</td>
+<td>only</td>
+<td>onto</td>
+<td>or</td>
+<td>other</td>
+</tr>
+<tr>
+<td>others</td>
+<td>otherwise</td>
+<td>ought</td>
+<td>our</td>
+<td>ours</td>
+</tr>
+<tr>
+<td>ourselves</td>
+<td>out</td>
+<td>outside</td>
+<td>over</td>
+<td>overall</td>
+</tr>
+<tr>
+<td>own</td>
+<td>particular</td>
+<td>particularly</td>
+<td>per</td>
+<td>perhaps</td>
+</tr>
+<tr>
+<td>placed</td>
+<td>please</td>
+<td>plus</td>
+<td>possible</td>
+<td>presumably</td>
+</tr>
+<tr>
+<td>probably</td>
+<td>provides</td>
+<td>que</td>
+<td>quite</td>
+<td>qv</td>
+</tr>
+<tr>
+<td>rather</td>
+<td>rd</td>
+<td>re</td>
+<td>really</td>
+<td>reasonably</td>
+</tr>
+<tr>
+<td>regarding</td>
+<td>regardless</td>
+<td>regards</td>
+<td>relatively</td>
+<td>respectively</td>
+</tr>
+<tr>
+<td>right</td>
+<td>said</td>
+<td>same</td>
+<td>saw</td>
+<td>say</td>
+</tr>
+<tr>
+<td>saying</td>
+<td>says</td>
+<td>second</td>
+<td>secondly</td>
+<td>see</td>
+</tr>
+<tr>
+<td>seeing</td>
+<td>seem</td>
+<td>seemed</td>
+<td>seeming</td>
+<td>seems</td>
+</tr>
+<tr>
+<td>seen</td>
+<td>self</td>
+<td>selves</td>
+<td>sensible</td>
+<td>sent</td>
+</tr>
+<tr>
+<td>serious</td>
+<td>seriously</td>
+<td>seven</td>
+<td>several</td>
+<td>shall</td>
+</tr>
+<tr>
+<td>she</td>
+<td>should</td>
+<td>shouldn't</td>
+<td>since</td>
+<td>six</td>
+</tr>
+<tr>
+<td>so</td>
+<td>some</td>
+<td>somebody</td>
+<td>somehow</td>
+<td>someone</td>
+</tr>
+<tr>
+<td>something</td>
+<td>sometime</td>
+<td>sometimes</td>
+<td>somewhat</td>
+<td>somewhere</td>
+</tr>
+<tr>
+<td>soon</td>
+<td>sorry</td>
+<td>specified</td>
+<td>specify</td>
+<td>specifying</td>
+</tr>
+<tr>
+<td>still</td>
+<td>sub</td>
+<td>such</td>
+<td>sup</td>
+<td>sure</td>
+</tr>
+<tr>
+<td>t's</td>
+<td>take</td>
+<td>taken</td>
+<td>tell</td>
+<td>tends</td>
+</tr>
+<tr>
+<td>th</td>
+<td>than</td>
+<td>thank</td>
+<td>thanks</td>
+<td>thanx</td>
+</tr>
+<tr>
+<td>that</td>
+<td>that's</td>
+<td>thats</td>
+<td>the</td>
+<td>their</td>
+</tr>
+<tr>
+<td>theirs</td>
+<td>them</td>
+<td>themselves</td>
+<td>then</td>
+<td>thence</td>
+</tr>
+<tr>
+<td>there</td>
+<td>there's</td>
+<td>thereafter</td>
+<td>thereby</td>
+<td>therefore</td>
+</tr>
+<tr>
+<td>therein</td>
+<td>theres</td>
+<td>thereupon</td>
+<td>these</td>
+<td>they</td>
+</tr>
+<tr>
+<td>they'd</td>
+<td>they'll</td>
+<td>they're</td>
+<td>they've</td>
+<td>think</td>
+</tr>
+<tr>
+<td>third</td>
+<td>this</td>
+<td>thorough</td>
+<td>thoroughly</td>
+<td>those</td>
+</tr>
+<tr>
+<td>though</td>
+<td>three</td>
+<td>through</td>
+<td>throughout</td>
+<td>thru</td>
+</tr>
+<tr>
+<td>thus</td>
+<td>to</td>
+<td>together</td>
+<td>too</td>
+<td>took</td>
+</tr>
+<tr>
+<td>toward</td>
+<td>towards</td>
+<td>tried</td>
+<td>tries</td>
+<td>truly</td>
+</tr>
+<tr>
+<td>try</td>
+<td>trying</td>
+<td>twice</td>
+<td>two</td>
+<td>un</td>
+</tr>
+<tr>
+<td>under</td>
+<td>unfortunately</td>
+<td>unless</td>
+<td>unlikely</td>
+<td>until</td>
+</tr>
+<tr>
+<td>unto</td>
+<td>up</td>
+<td>upon</td>
+<td>us</td>
+<td>use</td>
+</tr>
+<tr>
+<td>used</td>
+<td>useful</td>
+<td>uses</td>
+<td>using</td>
+<td>usually</td>
+</tr>
+<tr>
+<td>value</td>
+<td>various</td>
+<td>very</td>
+<td>via</td>
+<td>viz</td>
+</tr>
+<tr>
+<td>vs</td>
+<td>want</td>
+<td>wants</td>
+<td>was</td>
+<td>wasn't</td>
+</tr>
+<tr>
+<td>way</td>
+<td>we</td>
+<td>we'd</td>
+<td>we'll</td>
+<td>we're</td>
+</tr>
+<tr>
+<td>we've</td>
+<td>welcome</td>
+<td>well</td>
+<td>went</td>
+<td>were</td>
+</tr>
+<tr>
+<td>weren't</td>
+<td>what</td>
+<td>what's</td>
+<td>whatever</td>
+<td>when</td>
+</tr>
+<tr>
+<td>whence</td>
+<td>whenever</td>
+<td>where</td>
+<td>where's</td>
+<td>whereafter</td>
+</tr>
+<tr>
+<td>whereas</td>
+<td>whereby</td>
+<td>wherein</td>
+<td>whereupon</td>
+<td>wherever</td>
+</tr>
+<tr>
+<td>whether</td>
+<td>which</td>
+<td>while</td>
+<td>whither</td>
+<td>who</td>
+</tr>
+<tr>
+<td>who's</td>
+<td>whoever</td>
+<td>whole</td>
+<td>whom</td>
+<td>whose</td>
+</tr>
+<tr>
+<td>why</td>
+<td>will</td>
+<td>willing</td>
+<td>wish</td>
+<td>with</td>
+</tr>
+<tr>
+<td>within</td>
+<td>without</td>
+<td>won't</td>
+<td>wonder</td>
+<td>would</td>
+</tr>
+<tr>
+<td>wouldn't</td>
+<td>yes</td>
+<td>yet</td>
+<td>you</td>
+<td>you'd</td>
+</tr>
+<tr>
+<td>you'll</td>
+<td>you're</td>
+<td>you've</td>
+<td>your</td>
+<td>yours</td>
+</tr>
+<tr>
+<td>yourself</td>
+<td>yourselves</td>
+<td>zero</td>
+</tr>
+</tbody>
+</table>
+	
+	</div>
+
+
+
+
+
+
+
+<div class="wg-clear"></div>
+
+<!--/article058919042e40f5d26c8d9b2d65e9ac0f /article default-->
+</div>
+
+            
+            
+        
+            
+
+            
+            <div id="article9596073f1984a55ce1b34302c20df2be" class="panel panel-default">
+
+<a name="idlZYHPxmEpVzhs0MCwg3yvg" id="idlZYHPxmEpVzhs0MCwg3yvg"></a>
+
+
+
+
+<div class="panel-heading">
+	<h3 class="panel-title">Google History</h3>
+</div>
+
+
+
+
+
+	<div class="panel-body">
+		<p>The short stopwords list below is based on what we believed to be <a href="http://www.google.com/">Google</a> stopwords a decade ago, based on words that were ignored if you would search for them in combination with another word. (ie. as in the phrase "a keyword").&nbsp; Last time we checked using stopwords in searchterms did matter, results will be different.</p>
+<p>We do believe stopwords (and other non-relevant text parts such as navigation menus) are filtered out of the text by Google and other search engines to help determine what a page is about.</p>
+<table style="width: 70%;" cellpadding="3" cellspacing="3" border="0">
+<tbody>
+<tr valign="top">
+<td>
+<div align="left"><br> I <br> a <br> about <br> an <br> are <br> as <br> at <br> be <br> by <br> com <br> for <br> from<br> how</div>
+</td>
+<td>
+<div align="left"><br> in <br> is <br> it <br> of <br> on <br> or <br> that<br> the <br> this<br> to <br> was <br> what <br> when<br> where</div>
+</td>
+<td>
+<div align="left"><br> <br> who <br> will <br> with<br> the<br> www</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><br> Scroll down for a much longer list.</p>
+	
+	</div>
+
+
+
+
+
+
+
+<div class="wg-clear"></div>
+
+<!--/article9596073f1984a55ce1b34302c20df2be /article default-->
+</div>
+
+            
+            
+        
+            
+
+            
+            <div id="article09e9cfa21e73da42e8e88ea97bc0a432" class="panel panel-default">
+
+<a name="idCenPoh5z2kLo6I6pe8CkMg" id="idCenPoh5z2kLo6I6pe8CkMg"></a>
+
+
+
+
+<div class="panel-heading">
+	<h3 class="panel-title">Long Stopword List</h3>
+</div>
+
+
+
+
+
+	<div class="panel-body">
+		<p><i>A very </i>long list</p>
+<table style="width: 100%;" border="0" cellpadding="5" cellspacing="5">
+<tbody>
+<tr>
+<td style="width: 33%;" valign="top">a<br>able<br>about<br>above<br>abst<br>accordance<br>according<br>accordingly<br>across<br>act<br>actually<br>added<br>adj<br>affected<br>affecting<br>affects<br>after<br>afterwards<br>again<br>against<br>ah<br>all<br>almost<br>alone<br>along<br>already<br>also<br>although<br>always<br>am<br>among<br>amongst<br>an<br>and<br>announce<br>another<br>any<br>anybody<br>anyhow<br>anymore<br>anyone<br>anything<br>anyway<br>anyways<br>anywhere<br>apparently<br>approximately<br>are<br>aren<br>arent<br>arise<br>around<br>as<br>aside<br>ask<br>asking<br>at<br>auth<br>available<br>away<br>awfully<br>b<br>back<br>be<br>became<br>because<br>become<br>becomes<br>becoming<br>been<br>before<br>beforehand<br>begin<br>beginning<br>beginnings<br>begins<br>behind<br>being<br>believe<br>below<br>beside<br>besides<br>between<br>beyond<br>biol<br>both<br>brief<br>briefly<br>but<br>by<br>c<br>ca<br>came<br>can<br>cannot<br>can't<br>cause<br>causes<br>certain<br>certainly<br>co<br>com<br>come<br>comes<br>contain<br>containing<br>contains<br>could<br>couldnt<br>d<br>date<br>did<br>didn't<br>different<br>do<br>does<br>doesn't<br>doing<br>done<br>don't<br>down<br>downwards<br>due<br>during<br>e<br>each<br>ed<br>edu<br>effect<br>eg<br>eight<br>eighty<br>either<br>else<br>elsewhere<br>end<br>ending<br>enough<br>especially<br>et<br>et-al<br>etc<br>even<br>ever<br>every<br>everybody<br>everyone<br>everything<br>everywhere<br>ex<br>except<br>f<br>far<br>few<br>ff<br>fifth<br>first<br>five<br>fix<br>followed<br>following<br>follows<br>for<br>former<br>formerly<br>forth<br>found<br>four<br>from<br>further<br>furthermore<br>g<br>gave<br>get<br>gets<br>getting<br>give<br>given<br>gives<br>giving<br>go<br>goes<br>gone<br>got<br>gotten<br>h<br>had<br>happens<br>hardly<br>has<br>hasn't<br>have<br>haven't<br>having<br>he<br>hed<br>hence<br>her<br>here<br>hereafter<br>hereby<br>herein<br>heres<br>hereupon<br>hers<br>herself<br>hes<br>hi<br>hid<br>him<br>himself<br>his<br>hither<br>home<br>how<br>howbeit<br>however<br>hundred<br>i<br>id<br>ie<br>if<br>i'll<br>im<br>immediate<br>immediately<br>importance<br>important<br>in<br>inc<br>indeed<br>index<br>information<br>instead<br>into<br>invention<br>inward<br>is<br>isn't<br>it<br>itd<br>it'll<br>its<br>itself<br>i've<br>j<br>just<br>k<br>keep</td>
+<td valign="top">keeps<br>kept<br>kg<br>km<br>know<br>known<br>knows<br>l<br>largely<br>last<br>lately<br>later<br>latter<br>latterly<br>least<br>less<br>lest<br>let<br>lets<br>like<br>liked<br>likely<br>line<br>little<br>'ll<br>look<br>looking<br>looks<br>ltd<br>m<br>made<br>mainly<br>make<br>makes<br>many<br>may<br>maybe<br>me<br>mean<br>means<br>meantime<br>meanwhile<br>merely<br>mg<br>might<br>million<br>miss<br>ml<br>more<br>moreover<br>most<br>mostly<br>mr<br>mrs<br>much<br>mug<br>must<br>my<br>myself<br>n<br>na<br>name<br>namely<br>nay<br>nd<br>near<br>nearly<br>necessarily<br>necessary<br>need<br>needs<br>neither<br>never<br>nevertheless<br>new<br>next<br>nine<br>ninety<br>no<br>nobody<br>non<br>none<br>nonetheless<br>noone<br>nor<br>normally<br>nos<br>not<br>noted<br>nothing<br>now<br>nowhere<br>o<br>obtain<br>obtained<br>obviously<br>of<br>off<br>often<br>oh<br>ok<br>okay<br>old<br>omitted<br>on<br>once<br>one<br>ones<br>only<br>onto<br>or<br>ord<br>other<br>others<br>otherwise<br>ought<br>our<br>ours<br>ourselves<br>out<br>outside<br>over<br>overall<br>owing<br>own<br>p<br>page<br>pages<br>part<br>particular<br>particularly<br>past<br>per<br>perhaps<br>placed<br>please<br>plus<br>poorly<br>possible<br>possibly<br>potentially<br>pp<br>predominantly<br>present<br>previously<br>primarily<br>probably<br>promptly<br>proud<br>provides<br>put<br>q<br>que<br>quickly<br>quite<br>qv<br>r<br>ran<br>rather<br>rd<br>re<br>readily<br>really<br>recent<br>recently<br>ref<br>refs<br>regarding<br>regardless<br>regards<br>related<br>relatively<br>research<br>respectively<br>resulted<br>resulting<br>results<br>right<br>run<br>s<br>said<br>same<br>saw<br>say<br>saying<br>says<br>sec<br>section<br>see<br>seeing<br>seem<br>seemed<br>seeming<br>seems<br>seen<br>self<br>selves<br>sent<br>seven<br>several<br>shall<br>she<br>shed<br>she'll<br>shes<br>should<br>shouldn't<br>show<br>showed<br>shown<br>showns<br>shows<br>significant<br>significantly<br>similar<br>similarly<br>since<br>six<br>slightly<br>so<br>some<br>somebody<br>somehow<br>someone<br>somethan<br>something<br>sometime<br>sometimes<br>somewhat<br>somewhere<br>soon<br>sorry<br>specifically<br>specified<br>specify<br>specifying<br>still<br>stop<br>strongly<br>sub<br>substantially<br>successfully<br>such<br>sufficiently<br>suggest<br>sup<br>sure</td>
+<td valign="top">t<br>take<br>taken<br>taking<br>tell<br>tends<br>th<br>than<br>thank<br>thanks<br>thanx<br>that<br>that'll<br>thats<br>that've<br>the<br>their<br>theirs<br>them<br>themselves<br>then<br>thence<br>there<br>thereafter<br>thereby<br>thered<br>therefore<br>therein<br>there'll<br>thereof<br>therere<br>theres<br>thereto<br>thereupon<br>there've<br>these<br>they<br>theyd<br>they'll<br>theyre<br>they've<br>think<br>this<br>those<br>thou<br>though<br>thoughh<br>thousand<br>throug<br>through<br>throughout<br>thru<br>thus<br>til<br>tip<br>to<br>together<br>too<br>took<br>toward<br>towards<br>tried<br>tries<br>truly<br>try<br>trying<br>ts<br>twice<br>two<br>u<br>un<br>under<br>unfortunately<br>unless<br>unlike<br>unlikely<br>until<br>unto<br>up<br>upon<br>ups<br>us<br>use<br>used<br>useful<br>usefully<br>usefulness<br>uses<br>using<br>usually<br>v<br>value<br>various<br>'ve<br>very<br>via<br>viz<br>vol<br>vols<br>vs<br>w<br>want<br>wants<br>was<br>wasnt<br>way<br>we<br>wed<br>welcome<br>we'll<br>went<br>were<br>werent<br>we've<br>what<br>whatever<br>what'll<br>whats<br>when<br>whence<br>whenever<br>where<br>whereafter<br>whereas<br>whereby<br>wherein<br>wheres<br>whereupon<br>wherever<br>whether<br>which<br>while<br>whim<br>whither<br>who<br>whod<br>whoever<br>whole<br>who'll<br>whom<br>whomever<br>whos<br>whose<br>why<br>widely<br>willing<br>wish<br>with<br>within<br>without<br>wont<br>words<br>world<br>would<br>wouldnt<br>www<br>x<br>y<br>yes<br>yet<br>you<br>youd<br>you'll<br>your<br>youre<br>yours<br>yourself<br>yourselves<br>you've<br>z<br>zero</td>
+</tr>
+</tbody>
+</table>
+	
+	</div>
+
+
+
+
+
+
+
+<div class="wg-clear"></div>
+
+<!--/article09e9cfa21e73da42e8e88ea97bc0a432 /article default-->
+</div>
+
+            
+            
+        
+            
+
+            
+            
+            
+            
+        
+
+        
+
+    <!-- end position 1 -->
+    </div>
+
+    <!-- begin position 2 -->
+    <div class="col-sm-6">
+        
+        
+
+        
+            
+
+            
+            <div id="nava5556e27feac31a89c46576b76e393f9" class="nav bulletedList">
+
+<a name="idpVVuJ-6sMaicRldrduOT_Q" id="idpVVuJ-6sMaicRldrduOT_Q"></a>
+
+
+
+
+	<h3>Stopwords in other languages</h3>
+
+
+
+
+
+<ul class="list-group">
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/arabic">Arabic</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/armenian">Armenian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/basque">Basque</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/bengali">Bengali</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/brazilian">Brazilian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/bulgarian">Bulgarian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/catalan">Catalan</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/chinese-stopwords">Chinese</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/croatian">Croatian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/czech">Czech</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/danish">Danish</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/dutch">Dutch</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/finnish">Finnish</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/french">French</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/galician">Galician</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/german">German</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/greek">Greek</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/hebrew">Hebrew</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/hindi">Hindi</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/hungarian">Hungarian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/indonesian">Indonesian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/irish">Irish</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/italian">Italian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/japanese">Japanese</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/korean">Korean</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/kurdish">Kurdish</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/latvian">Latvian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/lithuanian-stopwords">Lithuanian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/marathi">Marathi</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/norwegian">Norwegian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/persian">Persian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/polish">Polish</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/portuguese">Portuguese</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/romanian">Romanian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/russian">Russian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/slovak-stopwords">Slovak</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/spanish">Spanish</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/swedish">Swedish</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/thai-stopwords">Thai</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/turkish">Turkish</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/ukrainian">Ukrainian</a>
+
+
+    </li>
+
+
+
+
+
+
+	<li class="list-group-item">
+	<a href="https://www.ranks.nl/stopwords/urdu">Urdu</a>
+
+
+    </li>
+
+
+
+    
+
+
+
+</ul>
+
+
+<!--/nava5556e27feac31a89c46576b76e393f9 /nav bulletedList-->
+</div>
+
+
+            
+        
+
+        
+
+    <!-- end position 2 -->
+    </div>
+
+  
+	
+	<!-- end row -->
+	</div>
+    
+  
+    
+    
+
+<!--/id="layout5965ac6b011a2e1397769012eb0a4003" -->
+</div>
+
+
+</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-49205764-1']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 968481985;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Stopwords_files/f.txt">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/968481985/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+
+
+</div> <!-- end wrap -->
+
+<!-- footer -->
+
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">	<a href="javascript:history.go(-1)"><i class="fa fa-reply green" alt="Return to previous screen" title="Return to previous screen"></i> return to previous screen</a> | 
+	<a href="https://www.ranks.nl/info/privacy-policy">privacy policy</a> | 
+	<a href="https://www.ranks.nl/info/terms">terms of service</a> | 
+	© ranks.nl &nbsp;
+	
+	</p>
+      </div>
+    </div>		  
+ 
+
+
+
+
+
+<div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="https://www.ranks.nl/stopwords"><div class="lb-nav"><a class="lb-prev" href="https://www.ranks.nl/stopwords"></a><a class="lb-next" href="https://www.ranks.nl/stopwords"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div><div id="cluetip-waitimage" style="position: absolute; display: none;"></div><div id="cluetip" style="position: absolute; display: none;"><div class="cluetip-outer" style="position: relative; z-index: 97;"><h3 class="cluetip-title ui-widget-header ui-cluetip-header"></h3><div class="cluetip-inner ui-widget-content ui-cluetip-content"></div></div><div class="cluetip-extra"></div></div><div class="modal fade YouTubeModal" id="YouTubeModal" role="dialog" aria-hidden="true" style="display: none;"><div class="modal-dialog" id="YouTubeModalDialog"><div class="modal-content" id="YouTubeModalContent"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button><h4 class="modal-title" id="YouTubeModalTitle"></h4></div><div class="modal-body" id="YouTubeModalBody" style="padding:0;"></div></div></div></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;limited&quot;,&quot;isActive&quot;:false,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
