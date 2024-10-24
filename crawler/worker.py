@@ -6,14 +6,6 @@ from utils import get_logger
 import scraper
 import time
 
-
-
-COUNT = 0
-with open('./stopwords.txt', 'r') as stopwords:
-    STOPWORDS = [word.strip() for word in stopwords.readlines()][1:]
-
-
-
 class Worker(Thread):
     def __init__(self, worker_id, config, frontier):
         self.logger = get_logger(f"Worker-{worker_id}", "Worker")
@@ -25,6 +17,11 @@ class Worker(Thread):
         super().__init__(daemon=True)
         
     def run(self):
+        global COUNT, STOPWORDS
+        COUNT = 0
+        with open('./stopwords.txt', 'r') as stopwords:
+            STOPWORDS = [word.strip() for word in stopwords.readlines()][1:]
+            
         while True:
             tbd_url = self.frontier.get_tbd_url()
             COUNT += 1

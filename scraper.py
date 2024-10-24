@@ -29,10 +29,20 @@ def extract_next_links(url, resp):
     links = [tag['href'] for tag in soup.find_all('a', href=True)]
     for link in links:
         if is_valid(link):
-            to_add = urlparse(url)
-            to_add = to_add.scheme + '://' + to_add.netloc + '/' + to_add.path
-            url_list.append(to_add)
-    
+            try:  
+                # filter out queries
+                idx = link.index('?')
+                url_list.append(link[0:idx])
+            except ValueError:
+                # no query found, filter out frags
+                try:  
+                    idx = link.index('#')
+                    url_list.append(link[0:idx])
+                except ValueError:
+                    # no frag found, use original url
+                    url_list.append(link)
+                url_list.append(link)
+            
     return url_list
 
 def is_valid(url):
@@ -43,10 +53,15 @@ def is_valid(url):
         parsed = urlparse(url)
         if parsed.scheme not in set(["http", "https"]):
             return False
+        # Check for calender traps with regex pattern 4 digits - 2 digits - 2 digits
+        if bool(re.search(r'\d{4}-\d{2}-\d{2}', url)):
+            return False
+        
         try:
             SUBDOMAIN_PAGE_COUNT[parsed.hostname] += 1
         except KeyError:
             SUBDOMAIN_PAGE_COUNT[parsed.hostname] = 1
+
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
