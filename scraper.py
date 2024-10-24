@@ -1,10 +1,13 @@
 import re
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
+
 def scraper(url, resp):
     links = extract_next_links(url, resp)
     return [link for link in links if is_valid(link)]
 
+
+SUBDOMAIN_PAGE_COUNT = {}
 def extract_next_links(url, resp):
     # Implementation required.
     # url: the URL that was used to get the page
@@ -26,7 +29,9 @@ def extract_next_links(url, resp):
     links = [tag['href'] for tag in soup.find_all('a', href=True)]
     for link in links:
         if is_valid(link):
-            url_list.append(link)
+            to_add = urlparse(url)
+            to_add = to_add.scheme + '://' + to_add.netloc + '/' + to_add.path
+            url_list.append(to_add)
     
     return url_list
 
@@ -38,6 +43,10 @@ def is_valid(url):
         parsed = urlparse(url)
         if parsed.scheme not in set(["http", "https"]):
             return False
+        try:
+            SUBDOMAIN_PAGE_COUNT[parsed.hostname] += 1
+        except KeyError:
+            SUBDOMAIN_PAGE_COUNT[parsed.hostname] = 1
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
