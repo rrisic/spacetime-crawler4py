@@ -35,14 +35,11 @@ def extract_next_links(url, resp):
                 url_list.append(link[0:idx])
             except ValueError:
                 # no query found, filter out frags
-                try:  
-                    idx = link.index('#')
-                    url_list.append(link[0:idx])
-                except ValueError:
-                    # no frag found, use original url
+                frag = urlparse(link).fragment
+                if (not frag):
                     url_list.append(link)
-                url_list.append(link)
-            
+                else:
+                    url_list.append(link[0:link.rfind('#')])    
     return url_list
 
 def is_valid(url):
