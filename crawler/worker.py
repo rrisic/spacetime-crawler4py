@@ -25,6 +25,7 @@ class Worker(Thread):
         while True:
             tbd_url = self.frontier.get_tbd_url()
             COUNT += 1
+            print(COUNT)
             if not tbd_url:
                 self.logger.info("Frontier is empty. Stopping Crawler.")
                 print(f'Total number of unique pages crawled: {COUNT}')
