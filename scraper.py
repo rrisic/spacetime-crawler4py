@@ -57,6 +57,7 @@ def is_valid(url):
         if bool(re.search(r'\d{4}-\d{2}-\d{2}', url)):
             return False
         
+        # subdomain counting
         try:
             SUBDOMAIN_PAGE_COUNT[parsed.hostname] += 1
         except KeyError:
