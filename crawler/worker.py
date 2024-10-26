@@ -19,7 +19,10 @@ class Worker(Thread):
     def run(self):
         global COUNT, STOPWORDS
         with open('./count.txt') as count_txt:
-            COUNT = int(count_txt.read())
+            try:
+                COUNT = int(count_txt.read())
+            except TypeError:
+                COUNT = 0
         with open('./stopwords.txt', 'r') as stopwords:
             STOPWORDS = [word.strip() for word in stopwords.readlines()][1:]
         
