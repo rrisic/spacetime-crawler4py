@@ -24,7 +24,9 @@ def extract_next_links(url, resp):
         error = resp.error
         print(error)
         return list()
-    
+    if (not resp.raw_response.content):
+        return list()
+        
     soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
     links = [tag['href'] for tag in soup.find_all('a', href=True)]
     for link in links:
@@ -38,8 +40,7 @@ def extract_next_links(url, resp):
                 frag = urlparse(link).fragment
                 if (not frag):
                     url_list.append(link)
-                else:
-                    url_list.append(link[0:link.rfind('#')])
+
             
     return url_list
 
@@ -52,7 +53,7 @@ def is_valid(url):
         if parsed.scheme not in set(["http", "https"]):
             return False
         # Check for calender traps with regex pattern 4 digits - 2 digits - 2 digits
-        if bool(re.search(r'\d{4}-\d{2}-\d{2}', url)):
+        if bool(re.search(r'\d{4}-\d{2}', url)):
             return False
         
         # subdomain parsing and counting
