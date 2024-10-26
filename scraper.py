@@ -35,13 +35,11 @@ def extract_next_links(url, resp):
                 url_list.append(link[0:idx])
             except ValueError:
                 # no query found, filter out frags
-                try:  
-                    idx = link.index('#')
-                    url_list.append(link[0:idx])
-                except ValueError:
-                    # no frag found, use original url
+                frag = urlparse(link).fragment
+                if (not frag):
                     url_list.append(link)
-                url_list.append(link)
+                else:
+                    url_list.append(link[0:link.rfind('#')])
             
     return url_list
 
@@ -57,11 +55,16 @@ def is_valid(url):
         if bool(re.search(r'\d{4}-\d{2}-\d{2}', url)):
             return False
         
-        # subdomain counting
+        # subdomain parsing and counting
+        hname_parts = parsed.hostname.split('.')
+        if len(hname_parts) > 2:
+            hname = '.'.join(hname_parts[:-2])  # Join all parts except the last two (domain and TLD)
+        else:
+            return False
         try:
-            SUBDOMAIN_PAGE_COUNT[parsed.hostname] += 1
+            SUBDOMAIN_PAGE_COUNT[hname] += 1
         except KeyError:
-            SUBDOMAIN_PAGE_COUNT[parsed.hostname] = 1
+            SUBDOMAIN_PAGE_COUNT[hname] = 1
 
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
