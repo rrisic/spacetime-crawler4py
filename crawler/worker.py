@@ -30,7 +30,7 @@ class Worker(Thread):
             while True:
                 tbd_url = self.frontier.get_tbd_url()
                 COUNT += 1
-                count_txt.write(COUNT) # with 'w', it overwrites the previous number
+                count_txt.write(str(COUNT)) # with 'w', it overwrites the previous number
                 if not tbd_url:
                     self.logger.info("Frontier is empty. Stopping Crawler.")
                     print(f'Total number of unique pages crawled: {COUNT}')
