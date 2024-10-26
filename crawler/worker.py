@@ -18,24 +18,26 @@ class Worker(Thread):
         
     def run(self):
         global COUNT, STOPWORDS
-        COUNT = 0
+        with open('./count.txt') as count_txt:
+            COUNT = int(count_txt.read())
         with open('./stopwords.txt', 'r') as stopwords:
             STOPWORDS = [word.strip() for word in stopwords.readlines()][1:]
-            
-        while True:
-            tbd_url = self.frontier.get_tbd_url()
-            COUNT += 1
-            print(COUNT)
-            if not tbd_url:
-                self.logger.info("Frontier is empty. Stopping Crawler.")
-                print(f'Total number of unique pages crawled: {COUNT}')
-                break
-            resp = download(tbd_url, self.config, self.logger)
-            self.logger.info(
-                f"Downloaded {tbd_url}, status <{resp.status}>, "
-                f"using cache {self.config.cache_server}.")
-            scraped_urls = scraper.scraper(tbd_url, resp)
-            for scraped_url in scraped_urls:
-                self.frontier.add_url(scraped_url)
-            self.frontier.mark_url_complete(tbd_url)
-            time.sleep(self.config.time_delay)
+        
+        with open('./count.txt', 'w') as count_txt:
+            while True:
+                tbd_url = self.frontier.get_tbd_url()
+                COUNT += 1
+                count_txt.write(COUNT) # with 'w', it overwrites the previous number
+                if not tbd_url:
+                    self.logger.info("Frontier is empty. Stopping Crawler.")
+                    print(f'Total number of unique pages crawled: {COUNT}')
+                    break
+                resp = download(tbd_url, self.config, self.logger)
+                self.logger.info(
+                    f"Downloaded {tbd_url}, status <{resp.status}>, "
+                    f"using cache {self.config.cache_server}.")
+                scraped_urls = scraper.scraper(tbd_url, resp)
+                for scraped_url in scraped_urls:
+                    self.frontier.add_url(scraped_url)
+                self.frontier.mark_url_complete(tbd_url)
+                time.sleep(self.config.time_delay)
