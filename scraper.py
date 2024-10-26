@@ -6,8 +6,30 @@ def scraper(url, resp):
     links = extract_next_links(url, resp)
     return [link for link in links if is_valid(link)]
 
+def tokenize(file):
+    alnum_set = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+    print('here')
+    cur_word = ""
+    i = 0
+    try:
+        while True:
+            x = file[i]
+            if (x in alnum_set):
+                cur_word += x
+            else:
+                if (cur_word): # Prevent empty strings
+                    yield cur_word.lower() # Need all capitalization removed
+                    cur_word = ""
+                if (x == ''): # Must do this AFTER adding the word in cur_word
+                    break
+            i += 1
+    except IndexError:
+        pass
+
 
 SUBDOMAIN_PAGE_COUNT = {}
+SEEN_PAGES = set()
+
 def extract_next_links(url, resp):
     # Implementation required.
     # url: the URL that was used to get the page
@@ -19,6 +41,7 @@ def extract_next_links(url, resp):
     #         resp.raw_response.content: the content of the page!
     # Return a list with the hyperlinks (as strings) scrapped from resp.raw_response.content
 
+    WORD_MIN = 15 # Fewer than 15 words is likely not an important site
     url_list = []
     if resp.status != 200: # Error on page, skip page
         error = resp.error
@@ -26,9 +49,22 @@ def extract_next_links(url, resp):
         return list()
     if (not resp.raw_response.content):
         return list()
+    
+    
         
     soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
     links = [tag['href'] for tag in soup.find_all('a', href=True)]
+    to_save = tuple(tokenize(soup.get_text()))
+    if not hash(to_save) in SEEN_PAGES and len(to_save) > WORD_MIN:
+        SEEN_PAGES.add(hash(to_save))
+        with open("./Logs/extracted_tokens.txt", 'a') as token_store:
+            for word in to_save:
+                token_store.write(word + ' ')
+            token_store.write('\n')
+
+    if len(to_save) <= WORD_MIN: # don't take its links if it's not a "useful" site
+        return list()
+    
     for link in links:
         if is_valid(link):
             try:  
