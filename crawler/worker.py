@@ -18,7 +18,7 @@ class Worker(Thread):
         
     def run(self):
         global COUNT, STOPWORDS
-        with open('./count.txt') as count_txt:
+        with open('./Logs/count.txt', 'r') as count_txt:
             try:
                 COUNT = int(count_txt.read())
             except ValueError:
@@ -26,21 +26,22 @@ class Worker(Thread):
         with open('./stopwords.txt', 'r') as stopwords:
             STOPWORDS = [word.strip() for word in stopwords.readlines()][1:]
         
-        with open('./count.txt', 'w') as count_txt:
-            while True:
-                tbd_url = self.frontier.get_tbd_url()
-                COUNT += 1
-                count_txt.write(str(COUNT)) # with 'w', it overwrites the previous number
-                if not tbd_url:
-                    self.logger.info("Frontier is empty. Stopping Crawler.")
-                    print(f'Total number of unique pages crawled: {COUNT}')
-                    break
-                resp = download(tbd_url, self.config, self.logger)
-                self.logger.info(
-                    f"Downloaded {tbd_url}, status <{resp.status}>, "
-                    f"using cache {self.config.cache_server}.")
-                scraped_urls = scraper.scraper(tbd_url, resp)
-                for scraped_url in scraped_urls:
-                    self.frontier.add_url(scraped_url)
-                self.frontier.mark_url_complete(tbd_url)
-                time.sleep(self.config.time_delay)
+        while True:
+            tbd_url = self.frontier.get_tbd_url()
+            COUNT += 1
+            with open('./Logs/count.txt', 'w') as count_txt_write:
+                count_txt_write.write(str(COUNT)) # with 'w', it overwrites the previous number
+                count_txt_write.flush()
+            if not tbd_url:
+                self.logger.info("Frontier is empty. Stopping Crawler.")
+                print(f'Total number of unique pages crawled: {COUNT}')
+                break
+            resp = download(tbd_url, self.config, self.logger)
+            self.logger.info(
+                f"Downloaded {tbd_url}, status <{resp.status}>, "
+                f"using cache {self.config.cache_server}.")
+            scraped_urls = scraper.scraper(tbd_url, resp)
+            for scraped_url in scraped_urls:
+                self.frontier.add_url(scraped_url)
+            self.frontier.mark_url_complete(tbd_url)
+            time.sleep(self.config.time_delay)

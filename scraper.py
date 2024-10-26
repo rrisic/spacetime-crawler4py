@@ -8,7 +8,6 @@ def scraper(url, resp):
 
 def tokenize(file):
     alnum_set = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
-    print('here')
     cur_word = ""
     i = 0
     try:
@@ -61,6 +60,7 @@ def extract_next_links(url, resp):
             for word in to_save:
                 token_store.write(word + ' ')
             token_store.write('\n')
+            token_store.flush()
 
     if len(to_save) <= WORD_MIN: # don't take its links if it's not a "useful" site
         return list()
