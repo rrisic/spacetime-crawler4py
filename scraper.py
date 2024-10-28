@@ -40,7 +40,7 @@ def extract_next_links(url, resp):
     #         resp.raw_response.content: the content of the page!
     # Return a list with the hyperlinks (as strings) scrapped from resp.raw_response.content
 
-    WORD_MIN = 15 # Fewer than 15 words is likely not an important site
+    WORD_MIN = 30 # Fewer than this many words is likely not an important site
     url_list = []
     if resp.status != 200: # Error on page, skip page
         error = resp.error
@@ -95,6 +95,8 @@ def is_valid(url):
         # subdomain parsing and counting
         hname_parts = parsed.hostname.split('.')
         if len(hname_parts) > 2:
+            if '.'.join(hname_parts[-2:]) != "uci.edu":
+                return false
             hname = '.'.join(hname_parts[:-2])  # Join all parts except the last two (domain and TLD)
         else:
             return False
