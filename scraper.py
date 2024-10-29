@@ -52,7 +52,7 @@ def is_similar(content_tokens, threshold):
     return False
 
 def extract_next_links(url, resp):
-    global MAX_PAGE
+    global MAX_PAGE, SUBDOMAIN_PAGE_COUNT
     # Implementation required.
     # url: the URL that was used to get the page
     # resp.url: the actual url of the page
@@ -74,6 +74,17 @@ def extract_next_links(url, resp):
         return list()
     if (not resp.raw_response.content):
         return list()
+
+    parsed = urlparse(url)
+    hname = parsed.hostname
+    try:
+        SUBDOMAIN_PAGE_COUNT[hname] += 1
+    except KeyError:
+        SUBDOMAIN_PAGE_COUNT[hname] = 1
+
+    with open('./Logs/subdomain_page_count.txt', 'w') as subpage_txt:
+        for key in SUBDOMAIN_PAGE_COUNT:
+            subpage_txt.write(f'{key}, {SUBDOMAIN_PAGE_COUNT[key]}\n')
     
     soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
     text = soup.get_text()
@@ -143,7 +154,7 @@ def is_valid(url):
 
         with open('./Logs/subdomain_page_count.txt', 'w') as subpage_txt:
             for key in SUBDOMAIN_PAGE_COUNT:
-                subpage_txt.write(f'{key}, {SUBDOMAIN_PAGE_COUNT[key]}')
+                subpage_txt.write(f'{key}, {SUBDOMAIN_PAGE_COUNT[key]}\n')
 
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"

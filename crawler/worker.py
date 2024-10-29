@@ -22,7 +22,7 @@ def print_final_info():
                 try:
                     words_map[word] += 1
                 except KeyError:
-                    words_map[words] = 1
+                    words_map[word] = 1
 
     count = 0
     for key in sorted(words_map, key = lambda abc: (-words_map[abc], abc)):
@@ -34,6 +34,14 @@ def print_final_info():
     print(f'Max page link: {MAX_PAGE[1]} has length of {MAX_PAGE[0]}')
 
     print('\n\nSubdomain Page Counts: ')
+
+    with open('./Logs/subdomain_page_count.txt') as subpage_txt:
+            SUBDOMAIN_PAGE_COUNT = {}
+            while True:
+                new_line = subpage_txt.readline().split(', ')
+                if (new_line == [""]):
+                    break
+                SUBDOMAIN_PAGE_COUNT[new_line[0]] = int(new_line[1])
 
     for key in sorted(SUBDOMAIN_PAGE_COUNT, key = lambda abc: (-SUBDOMAIN_PAGE_COUNT[abc], abc)):
 
