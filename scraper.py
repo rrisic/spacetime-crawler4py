@@ -144,17 +144,8 @@ def is_valid(url):
                         return False
                 else:
                     return False
-            hname = '.'.join(hname_parts[:-2])  # Join all parts except the last two (domain and TLD)
         else:
             return False
-        try:
-            SUBDOMAIN_PAGE_COUNT[hname] += 1
-        except KeyError:
-            SUBDOMAIN_PAGE_COUNT[hname] = 1
-
-        with open('./Logs/subdomain_page_count.txt', 'w') as subpage_txt:
-            for key in SUBDOMAIN_PAGE_COUNT:
-                subpage_txt.write(f'{key}, {SUBDOMAIN_PAGE_COUNT[key]}\n')
 
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
