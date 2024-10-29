@@ -99,8 +99,13 @@ def is_valid(url):
         # subdomain parsing and counting
         hname_parts = parsed.hostname.split('.')
         if len(hname_parts) > 2:
-            if '.'.join(hname_parts[-2:]) != "uci.edu":
-                return false
+            domain = '.'.join(hname_parts[-3:])
+            if domain != 'ics.uci.edu' and domain != 'cs.uci.edu' and domain != 'informations.uci.edu' and domain != 'stat.uci.edu':
+                if domain == 'today.uci.edu':
+                    if 'today.uci.edu/department/information_computer_sciences' in url:
+                        return False
+                else:
+                    return False
             hname = '.'.join(hname_parts[:-2])  # Join all parts except the last two (domain and TLD)
         else:
             return False
