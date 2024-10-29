@@ -20,11 +20,11 @@ def tokenize(file):
             if (x in alnum_set):
                 cur_word += x
             else:
-                if (len(cur_word) > 3 and not cur_word in STOPWORDS): # Prevent empty strings
+                if (len(cur_word) > 3 and not (cur_word in STOPWORDS)): # Prevent empty strings
                     yield cur_word.lower() # Need all capitalization removed
-                    cur_word = ""
                 if (x == ''): # Must do this AFTER adding the word in cur_word
                     break
+                cur_word = ""
             i += 1
     except IndexError:
         pass
@@ -41,12 +41,18 @@ def jaccard_similarity(tokens1, tokens2):
 
 def is_similar(content_tokens, threshold):
     for seen_tokens in SEEN_PAGES:
-        if jaccard_similarity(content_tokens, seen_tokens) > threshold:
+        if jaccard_similarity(set(content_tokens), set(seen_tokens)) > threshold:
             return True
     SEEN_PAGES.add(content_tokens)
+    with open('./Logs/extracted_tokens.txt', 'a') as token_store:
+        for word in content_tokens:
+            token_store.write(word + ' ')
+        token_store.write('\n')
+        token_store.flush()
     return False
 
 def extract_next_links(url, resp):
+    global MAX_PAGE
     # Implementation required.
     # url: the URL that was used to get the page
     # resp.url: the actual url of the page
@@ -56,6 +62,8 @@ def extract_next_links(url, resp):
     #         resp.raw_response.url: the url, again
     #         resp.raw_response.content: the content of the page!
     # Return a list with the hyperlinks (as strings) scrapped from resp.raw_response.content
+
+    MAX_PAGE = [0, '']
 
     WORD_MIN = 30 # Fewer than this many words is likely not an important site
     THRESHOLD = 0.8
@@ -69,12 +77,24 @@ def extract_next_links(url, resp):
     
     soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
     text = soup.get_text()
-    content_tokens = set(tokenize(text))
+    content_tokens = tuple(tokenize(text))
+    content_len = len(content_tokens)
 
-    if len(content_tokens) <= WORD_MIN or is_similar(content_tokens, THRESHOLD): # don't take its links if it's not a "useful" site or a duplicate
+    if (content_len > MAX_PAGE[0]):
+        MAX_PAGE[0] = content_len
+        MAX_PAGE[1] = url
+        with open('./Logs/longest_page.txt', 'w') as page_txt:
+            page_txt.write(str(MAX_PAGE[0]) + '\n')
+            page_txt.write(MAX_PAGE[1])
+    
+                           
+    
+    if content_len <= WORD_MIN or is_similar(content_tokens, THRESHOLD): # don't take its links if it's not a "useful" site or a duplicate
         return list()
     
     links = [tag['href'] for tag in soup.find_all('a', href=True)]
+
+    
     for link in links:
         if is_valid(link):
             try:  
@@ -94,6 +114,7 @@ def is_valid(url):
     # Decide whether to crawl this url or not. 
     # If you decide to crawl it, return True; otherwise return False.
     # There are already some conditions that return False.
+    global SUBDOMAIN_PAGE_COUNT
     try:
         parsed = urlparse(url)
         if parsed.scheme not in set(["http", "https"]):
@@ -119,6 +140,10 @@ def is_valid(url):
             SUBDOMAIN_PAGE_COUNT[hname] += 1
         except KeyError:
             SUBDOMAIN_PAGE_COUNT[hname] = 1
+
+        with open('./Logs/subdomain_page_count.txt', 'w') as subpage_txt:
+            for key in SUBDOMAIN_PAGE_COUNT:
+                subpage_txt.write(f'{key}, {SUBDOMAIN_PAGE_COUNT[key]}')
 
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
