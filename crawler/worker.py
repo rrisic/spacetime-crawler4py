@@ -17,18 +17,14 @@ class Worker(Thread):
         super().__init__(daemon=True)
         
     def run(self):
-        global COUNT, STOPWORDS
+        global COUNT
         with open('./Logs/count.txt', 'r') as count_txt:
             try:
                 COUNT = int(count_txt.read())
             except ValueError:
                 COUNT = 0
-        with open('./stopwords.txt', 'r') as stopwords:
-            STOPWORDS = [word.strip() for word in stopwords.readlines()][1:]
-        
         while True:
             tbd_url = self.frontier.get_tbd_url()
-            COUNT += 1
             with open('./Logs/count.txt', 'w') as count_txt_write:
                 count_txt_write.write(str(COUNT)) # with 'w', it overwrites the previous number
                 count_txt_write.flush()
@@ -40,6 +36,8 @@ class Worker(Thread):
             self.logger.info(
                 f"Downloaded {tbd_url}, status <{resp.status}>, "
                 f"using cache {self.config.cache_server}.")
+            if (resp.status == 200):
+                COUNT += 1
             scraped_urls = scraper.scraper(tbd_url, resp)
             for scraped_url in scraped_urls:
                 self.frontier.add_url(scraped_url)

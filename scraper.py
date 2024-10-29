@@ -2,6 +2,10 @@ import re
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 
+with open('./stopwords.txt', 'r') as stopwords:
+    STOPWORDS = {word.strip() for word in stopwords.readlines()}
+    STOPWORDS.remove("")
+        
 def scraper(url, resp):
     links = extract_next_links(url, resp)
     return [link for link in links if is_valid(link)]
@@ -16,7 +20,7 @@ def tokenize(file):
             if (x in alnum_set):
                 cur_word += x
             else:
-                if (cur_word): # Prevent empty strings
+                if (len(cur_word) > 3 and not cur_word in STOPWORDS): # Prevent empty strings
                     yield cur_word.lower() # Need all capitalization removed
                     cur_word = ""
                 if (x == ''): # Must do this AFTER adding the word in cur_word
