@@ -33,6 +33,19 @@ def tokenize(file):
 SUBDOMAIN_PAGE_COUNT = {}
 SEEN_PAGES = set()
 
+def jaccard_similarity(tokens1, tokens2):
+    # Formula from class to detect similarity
+    intersection = len(tokens1 & tokens2)
+    union = len(tokens1 | tokens2)
+    return intersection / union if union != 0 else 0
+
+def is_similar(content_tokens, threshold):
+    for seen_tokens in SEEN_PAGES:
+        if jaccard_similarity(content_tokens, seen_tokens) > threshold:
+            return True
+    SEEN_PAGES.add(content_tokens)
+    return False
+
 def extract_next_links(url, resp):
     # Implementation required.
     # url: the URL that was used to get the page
@@ -45,6 +58,7 @@ def extract_next_links(url, resp):
     # Return a list with the hyperlinks (as strings) scrapped from resp.raw_response.content
 
     WORD_MIN = 30 # Fewer than this many words is likely not an important site
+    THRESHOLD = 0.8
     url_list = []
     if resp.status != 200: # Error on page, skip page
         error = resp.error
@@ -53,22 +67,14 @@ def extract_next_links(url, resp):
     if (not resp.raw_response.content):
         return list()
     
-    
-        
     soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
-    links = [tag['href'] for tag in soup.find_all('a', href=True)]
-    to_save = tuple(tokenize(soup.get_text()))
-    if not hash(to_save) in SEEN_PAGES and len(to_save) > WORD_MIN:
-        SEEN_PAGES.add(hash(to_save))
-        with open("./Logs/extracted_tokens.txt", 'a') as token_store:
-            for word in to_save:
-                token_store.write(word + ' ')
-            token_store.write('\n')
-            token_store.flush()
+    text = soup.get_text()
+    content_tokens = set(tokenize(text))
 
-    if len(to_save) <= WORD_MIN: # don't take its links if it's not a "useful" site
+    if len(content_tokens) <= WORD_MIN or is_similar(content_tokens, THRESHOLD): # don't take its links if it's not a "useful" site or a duplicate
         return list()
     
+    links = [tag['href'] for tag in soup.find_all('a', href=True)]
     for link in links:
         if is_valid(link):
             try:  
