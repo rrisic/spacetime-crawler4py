@@ -107,30 +107,28 @@ def extract_next_links(url, resp):
     
     for link in links:
         if is_valid(link):
-            try:  
-                # filter out queries
-                idx = link.index('?')
-                url_list.append(link[0:idx])
-            except ValueError:
-                # no query found, filter out frags
+            try:
                 frag = urlparse(link).fragment
                 if (not frag):
                     url_list.append(link)
-
-            
+                else:
+                    url_list.append(link[:link.rfind('#')])
+            except Exception as e:
+                print(e)
+                pass
+        
     return url_list
 
 def is_valid(url):
     # Decide whether to crawl this url or not. 
     # If you decide to crawl it, return True; otherwise return False.
     # There are already some conditions that return False.
-    global SUBDOMAIN_PAGE_COUNT
     try:
         parsed = urlparse(url)
         if parsed.scheme not in set(["http", "https"]):
             return False
         # Check for calender traps with regex pattern 4 digits - 2 digits - 2 digits
-        if bool(re.search(r'\d{4}-\d{2}', url)):
+        if bool(re.search(r'\d{4}-\d{2}', url[(url[:-1] if url[-1] == '/' else url).rfind('/'):])):
             return False
         
         # subdomain parsing and counting
