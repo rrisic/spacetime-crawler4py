@@ -19,7 +19,7 @@ def tokenize(file):
             if (x in alnum_set):
                 cur_word += x
             else:
-                if (len(cur_word) > 2 and not (cur_word in STOPWORDS)): # Prevent empty strings
+                if (len(cur_word) > 2 and not (cur_word.lower() in STOPWORDS)): # Prevent empty strings
                     yield cur_word.lower() # Need all capitalization removed
                 if (x == ''): # Must do this AFTER adding the word in cur_word
                     break
